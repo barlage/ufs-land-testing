@@ -1,0 +1,5 @@
+# dont track any output files
+baselines/*
+reports/*
+workshop/*
+forcing/*
