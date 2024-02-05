@@ -7,6 +7,7 @@ $compare_baseline    = "yes";           # compare to existing baseline
 $compare_baseline_to = "prev.baseline"; # name in baselines directory to compare
 
 $executable = "/Users/barlage/work/models/ufs-land-driver/run/ufsLand.exe";
+$parameters = "/Users/barlage/work/models/ufs-land-driver/ccpp-physics/physics/noahmptable.tbl";
 
 $mpi_test        = "no";
 
@@ -30,6 +31,7 @@ if($restart_test eq "yes") {
   ###########################
 
   system("cp $executable workshop/6hr.test") ;
+  system("cp $parameters workshop/6hr.test") ;
   system("cp namelists/ufs-land.namelist.6hr.test.$namelist_suffix workshop/6hr.test/ufs-land.namelist") ;
   chdir("workshop/6hr.test") ;
 
@@ -48,6 +50,7 @@ if($restart_test eq "yes") {
   #####################################
 
   system("cp $executable workshop/3hr.restart") ;
+  system("cp $parameters workshop/3hr.restart") ;
   system("cp namelists/ufs-land.namelist.3hr.restart.$namelist_suffix workshop/3hr.restart/ufs-land.namelist") ;
   chdir("workshop/3hr.restart") ;
 

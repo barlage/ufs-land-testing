@@ -1,6 +1,6 @@
 &run_setup
 
-  static_file      = "../../forcing/ufs-land_C96_static_fields.nc"
+  static_file      = "../../forcing/ufs-land_C96_static_fields_hr2.nc"
   init_file        = "../../forcing/ufs-land_C96_init_fields_1hr.nc"
   forcing_dir      = "../../forcing/"
   
