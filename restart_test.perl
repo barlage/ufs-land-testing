@@ -7,9 +7,9 @@ $compare_baseline    = "yes";           # compare to existing baseline
 $compare_baseline_to = "prev.baseline"; # name in baselines directory to compare
 
 $executable = "/Users/barlage/work/models/ufs-land-driver/run/ufsLand.exe";
-$parameters = "/Users/barlage/work/models/ufs-land-driver/ccpp-physics/physics/noahmptable.tbl";
+$parameters = "/Users/barlage/work/models/ufs-land-driver/ccpp-physics/physics/SFC_Models/Land/Noahmp/noahmptable.tbl";
 
-$mpi_test        = "no";
+$mpi_test        = "yes";
 
 $namelist_suffix = "noregrid";
 
@@ -41,7 +41,7 @@ if($restart_test eq "yes") {
     system("./ufsLand.exe") ;
   }
 
-  system("cp ufs_land_restart.2011-01-01_02-00-00.nc ../../workshop/3hr.restart") ;
+  system("cp ufs_land_restart.2010-01-01_02-00-00.nc ../../workshop/3hr.restart") ;
 
   chdir("../..") ;
 
@@ -65,7 +65,7 @@ if($restart_test eq "yes") {
   ####################################
 
   chdir("../..") ;
-  system("nccmp -dsSfq workshop/6hr.test/ufs_land_output.2011-01-01_06-00-00.nc workshop/3hr.restart/ufs_land_output.2011-01-01_06-00-00.nc > reports/${report_name}.restart");
+  system("nccmp -dsSfq workshop/6hr.test/ufs_land_output.2010-01-01_06-00-00.nc workshop/3hr.restart/ufs_land_output.2010-01-01_06-00-00.nc > reports/${report_name}.restart");
 
   open(REPORT,"reports/${report_name}.restart");
   $line2read = readline(REPORT);
@@ -85,7 +85,7 @@ if($restart_test eq "yes") {
 
   if($compare_baseline eq "yes") {
 
-    system("nccmp -dsSfq workshop/6hr.test/ufs_land_output.2011-01-01_06-00-00.nc baselines/$compare_baseline_to/ufs_land_output.2011-01-01_06-00-00.nc > reports/${report_name}.compare_baseline.$compare_baseline_to");
+    system("nccmp -dsSfq workshop/6hr.test/ufs_land_output.2010-01-01_06-00-00.nc baselines/$compare_baseline_to/ufs_land_output.2010-01-01_06-00-00.nc > reports/${report_name}.compare_baseline.$compare_baseline_to");
 
     open(REPORT,"reports/${report_name}.compare_baseline.$compare_baseline_to");
     $line2read = readline(REPORT);
@@ -110,7 +110,7 @@ if($restart_test eq "yes") {
   if($save_baseline eq "yes") {
 
     system("mkdir baselines/$report_name");
-    system("cp workshop/6hr.test/ufs_land_output.2011-01-01_06-00-00.nc baselines/$report_name");
+    system("cp workshop/6hr.test/ufs_land_output.2010-01-01_06-00-00.nc baselines/$report_name");
 
   } # end save_baseline block
 
